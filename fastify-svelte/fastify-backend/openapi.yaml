@@ -17,7 +17,7 @@ paths:
               type: object
               example:
                 id: 1
-                name: prodcut one
+                name: item one
       responses:
         '200':
           description: Successful response
