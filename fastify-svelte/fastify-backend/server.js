@@ -1,6 +1,10 @@
 const fastify = require('fastify')({ logger: true });
 
-const items = new Map();
+const items = [
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+    { id: 3, name: 'Item 3' },
+];
 
 const decodeJWT = (token) => {
     try {
@@ -33,15 +37,13 @@ fastify.get('/', function (request, reply) {
 
 fastify.get('/items', (request, reply) => {
     fastify.log.info('GET /items request received from user ' + request.auth.sub);
-    reply.send(items.get(request.auth.sub) || []);
+    reply.send(items);
 });
 
 fastify.post('/items', (request, reply) => {
     const item = request.body;
     fastify.log.info('POST /items request received from user ' + request.auth.sub);
-    const tempItems = items.get(request.auth.sub) || [];
-    tempItems.push(item);
-    items.set(request.auth.sub, tempItems);
+    items.push(item);
     reply.send(item);
 });
 
