@@ -1,12 +1,12 @@
 import { Buffer } from 'buffer';
-import jwt from 'jsonwebtoken';
-import { json } from '@sveltejs/kit';
-import { request } from 'http';
 
-const target = import.meta.env.VITE_TOKEN_ENDPOINT;
-const clientID = import.meta.env.VITE_CLIENT_ID;
-const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
-const redirectURI = import.meta.env.VITE_REDIRECT_URI;
+import { env } from '$env/dynamic/public';
+import { env as pvtEnv } from '$env/dynamic/private';
+
+const target = env.PUBLIC_TOKEN_ENDPOINT;
+const clientID = pvtEnv.CLIENT_ID;
+const clientSecret = pvtEnv.CLIENT_SECRET;
+const redirectURI = env.PUBLIC_REDIRECT_URI;
 
 export async function GET({ locals, url, fetch }) {
     const code = url.searchParams.get('code');

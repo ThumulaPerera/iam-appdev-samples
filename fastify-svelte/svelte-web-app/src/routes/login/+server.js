@@ -1,7 +1,10 @@
-const target = import.meta.env.VITE_AUTHORIZE_ENDPOINT;
-const clientID = import.meta.env.VITE_CLIENT_ID;
-const redirectURL = import.meta.env.VITE_REDIRECT_URI;
-const scopes = import.meta.env.VITE_SCOPES;
+import { env } from '$env/dynamic/public';
+import { env as pvtEnv } from '$env/dynamic/private';
+
+const target = env.PUBLIC_AUTHORIZE_ENDPOINT;
+const clientID = pvtEnv.CLIENT_ID;
+const redirectURL = env.PUBLIC_REDIRECT_URI;
+const scopes = env.PUBLIC_SCOPES;
 
 export function GET() {
     let options = {

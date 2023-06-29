@@ -1,13 +1,13 @@
 <script>
+    import { env } from '$env/dynamic/public';
+
     export let data;
     let items = [];
 
     let name;
     let id;
 
-    console.log('data: ' + data);
-
-    const target = 'https://2d9ec1f6-2f04-4127-974f-0a3b20e97af5-prod.e1-us-east-azure.choreoapis.dev/rbln/item-service/items-803/1.0.0/items';
+    const target = env.PUBLIC_ITEMS_ENDPOINT;
 
     async function onGetItems() {
         items = await getItems();
