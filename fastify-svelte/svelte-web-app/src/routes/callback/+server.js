@@ -20,7 +20,7 @@ export async function GET({ locals, url, fetch }) {
         status: 302,
         headers: {
             location: '/',
-            'set-cookie': `token=${access_token || ''}; path=/; HttpOnly`
+            'set-cookie': `id-token=${id_token || ''}; path=/; HttpOnly, token=${access_token || ''}; path=/; HttpOnly`
         }
     }
 

@@ -43,7 +43,8 @@ function getItems(fetch, token) {
         }
     })
         .then(response => {
-            console.log(response);
+            console.log('items: ' + response.json);
+            console.log('end');
             if (response.ok) {
                 return response.json();
             }
