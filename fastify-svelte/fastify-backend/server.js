@@ -28,6 +28,7 @@ fastify.addHook('preHandler', (request, reply, done) => {
     }
 
     request.auth = decoded;
+    console.log('decoded: ' + JSON.stringify(decoded));
     done();
 });
 
