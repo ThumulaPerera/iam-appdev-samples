@@ -6,21 +6,22 @@ import { env as pvtEnv } from '$env/dynamic/private';
 const target = env.PUBLIC_TOKEN_ENDPOINT;
 const clientID = pvtEnv.CLIENT_ID;
 const clientSecret = pvtEnv.CLIENT_SECRET;
-const redirectURI = env.PUBLIC_REDIRECT_URI;
+const redirectURI = env.PUBLIC_ADD_ITEM_REDIRECT_URI;
 
 export async function GET({ url, fetch, cookies }) {
     const code = url.searchParams.get('code');
-    const { access_token, id_token } = await getAccessToken(fetch, code);
+    console.log('code: '+code);
+    const { access_token } = await getAccessToken(fetch, code);
 
-    cookies.set('id-token', id_token, { path: '/' });
-    cookies.set('token', access_token, { path: '/' });
+    cookies.set('step-up-token', access_token, { path: '/' });
     
     let options = {
         status: 302,
         headers: {
-            location: '/'
+            location: '/items'
         }
     }
+
 	return new Response(null, options);
 }
 
@@ -39,6 +40,7 @@ function getAccessToken(fetch, code) {
         })
     })
      .then(response => {
+        console.log(response);
         if (response.ok) {
             return response.json();
         }

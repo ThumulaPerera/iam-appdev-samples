@@ -29,34 +29,6 @@
         })
     }
 
-    async function onAddItem() {
-        await addItem();
-        name = null;
-        id = null;
-    }
-
-    function addItem() {
-        return fetch(target, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${data.token}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                id,
-                name
-            })
-        })
-            .then(response => {
-                console.log(response);
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            })
-    }
-
     function onClearList() {
         items = [];
     }
@@ -90,7 +62,9 @@
 <!-- TODO convert this to a form post -->
 <input placeholder="Item ID" bind:value={id}>
 <input placeholder="Item Name" bind:value={name}>
-<button on:click={onAddItem}>Add Item</button>
+<a href="/items?id={id}&name={name}">
+    <button>Add Item</button>
+</a>
 <a href="/logout">
     <button>Logout</button>
 </a>
