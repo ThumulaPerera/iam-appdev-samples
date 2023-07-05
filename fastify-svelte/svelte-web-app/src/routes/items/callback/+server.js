@@ -11,9 +11,10 @@ const redirectURI = env.PUBLIC_ADD_ITEM_REDIRECT_URI;
 export async function GET({ url, fetch, cookies }) {
     const code = url.searchParams.get('code');
     console.log('code: '+code);
-    const { access_token } = await getAccessToken(fetch, code);
+    const { access_token, id_token } = await getAccessToken(fetch, code);
 
     cookies.set('step-up-token', access_token, { path: '/' });
+    cookies.set('step-up-id-token', id_token, { path: '/' });    
     
     let options = {
         status: 302,
