@@ -1,14 +1,16 @@
 <script>
+    import { env } from '$env/dynamic/public';
+
     export let data;
 
     let tokens = data.tokens;
     let user = data.user;
 
-    let proxyBaseUrl = 'http://localhost:4180';
-    let proxySignInEndPoint = '/oauth2/sign_in';
-    let proxySignOutEndPoint = '/oauth2/sign_out';
+    let proxyBaseUrl = env.PUBLIC_PROXY_BASE_URL;
+    let proxySignInEndPoint = env.PUBLIC_PROXY_SIGN_IN_ENDPOINT;
+    let proxySignOutEndPoint = env.PUBLIC_PROXY_SIGN_OUT_ENDPOINT;
 
-    let asgardeoLogoutUrl = 'https://api.asgardeo.io/t/teeorg/oidc/logout';
+    let asgardeoLogoutUrl = env.PUBLIC_ASGARDEO_LOGOUT_URL;
 
     function createPlainUrl(base, params) {
         let url = base
