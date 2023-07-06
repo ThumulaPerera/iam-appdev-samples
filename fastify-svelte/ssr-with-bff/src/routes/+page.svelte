@@ -49,7 +49,6 @@
             rd: unencodedSignOutRedirectUrl 
         }
     );
-
 </script>
 
 
@@ -60,10 +59,16 @@
 </a>
 {:else}
 Welcome {user.email}!
+
 <br>
 <br>
 <a href="/profile">
     <button>View Profile</button>
+</a>
+<br>
+<br>
+<a href="/items">
+    <button>View Items</button>
 </a>
 <br>
 <br>
