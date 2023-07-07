@@ -6,7 +6,6 @@
     let tokens = data.tokens;
     let user = data.user;
 
-    let proxyExternalUrl = env.PUBLIC_PROXY_EXTERNAL_URL;
     let proxyBaseUrl = env.PUBLIC_PROXY_BASE_URL;
     let proxySignInEndPoint = env.PUBLIC_PROXY_SIGN_IN_ENDPOINT;
     let proxySignOutEndPoint = env.PUBLIC_PROXY_SIGN_OUT_ENDPOINT;
@@ -42,7 +41,7 @@
     let unencodedSignOutRedirectUrl = createPlainUrl(asgardeoLogoutUrl, 
         { 
             id_token_hint: tokens?.id_token,
-            post_logout_redirect_uri: proxyExternalUrl + '/', 
+            post_logout_redirect_uri: proxyBaseUrl + '/', 
         }
     );
 
