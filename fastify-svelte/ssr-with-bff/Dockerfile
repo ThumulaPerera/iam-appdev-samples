@@ -86,4 +86,5 @@ RUN chmod +x startup.sh
 EXPOSE 4180
 
 # Define the entry point or any other configuration needed to run the combined images
-CMD sh startup.sh
+ENTRYPOINT ["/bin/sh"]
+CMD ["./startup.sh"]
