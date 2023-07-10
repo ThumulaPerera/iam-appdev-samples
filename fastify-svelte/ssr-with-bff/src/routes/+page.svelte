@@ -74,6 +74,11 @@ Welcome {user.email}!
 </a>
 <br>
 <br>
+<a href="/external">
+    <button>View External Items</button>
+</a>
+<br>
+<br>
 <a href="{logoutUrl}">
     <button>Sign Out</button>
 </a>
